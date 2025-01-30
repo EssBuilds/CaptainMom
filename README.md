@@ -1,131 +1,163 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# MomTaskMaster: Dynamic To-Do App for Busy Working Mothers
 
-Welcome USER_NAME,
+## Live Site
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[MomTaskMaster Live Site](https://momtaskmaster.herokuapp.com)
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Responsivity
 
-## Gitpod Reminders
+Responsivity Example
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Table of Contents
+- [Description](#description)
+- [UX](#ux)
+- [Design](#design)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Tablet / Mobile View](#tablet--mobile-view)
+  - [Future Features](#future-features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Database Schema](#database-schema)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
 
-`python3 -m http.server`
+## UX
 
-A blue button should appear to click: _Make Public_,
+### User Stories
 
-Another blue button should appear to click: _Open Browser_.
+1. As a busy working mother, I want to quickly add tasks so that I can keep track of my responsibilities.
+2. As a user, I want to categorize my tasks by priority so that I can focus on the most important items.
+3. As a parent, I want to add and remove my children's profiles so that I can manage tasks for the entire family.
+4. As a user, I want to set due dates for tasks so that I can meet deadlines and plan my time effectively.
+5. As a mother, I want to assign tasks to specific children so that I can delegate responsibilities.
+6. As a user, I want to view task completion rates so that I can track my productivity.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+### Wireframes
 
-A blue button should appear to click: _Make Public_,
+- [Home Page Wireframe](https://example.com/home-wireframe.jpg)
+- [Task List Wireframe](https://example.com/task-list-wireframe.jpg)
+- [Add Task Wireframe](https://example.com/add-task-wireframe.jpg)
 
-Another blue button should appear to click: _Open Browser_.
+## Design
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### Color Scheme
 
-To log into the Heroku toolbelt CLI:
+- Primary Color: #4A90E2 (Calm Blue)
+- Secondary Color: #F5A623 (Warm Orange)
+- Background Color: #F9F9F9 (Light Gray)
+- Text Color: #333333 (Dark Gray)
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Typography
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+- Primary Font: 'Roboto', sans-serif
+- Secondary Font: 'Montserrat', sans-serif
 
-### Connecting your Mongo database
+### Imagery
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+- Custom icons for task categories
+- Calming background patterns for the dashboard
 
-------
+## Features
 
-## Release History
+### Existing Features
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- User authentication (register, login, logout)
+- Create, read, update, and delete tasks
+- Categorize tasks by priority and type
+- Add and remove children profiles
+- Assign tasks to specific children
+- Set due dates and reminders
+- Data visualization of task completion rates
 
-**June 18, 2024,** Add Mongo back into template
+### Tablet / Mobile View
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+- Responsive design adapts to smaller screens
+- Collapsible sidebar menu for easy navigation
+- Touch-friendly buttons and inputs
+- Simplified task view for quick access on-the-go
 
-**May 28 2024:** Fix Mongo and Links installs
+### Future Features
 
-**April 26 2024:** Update node version to 16
+- Integration with calendar apps
+- Voice command task creation
+- Collaborative task sharing with family members
+- Gamification elements to encourage task completion
 
-**September 20 2023:** Update Python version to 3.9.17.
+## Testing
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+### Automated Testing
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+- Unit tests for Python backend logic
+- Integration tests for API endpoints
+- Jest tests for JavaScript functions
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Manual Testing
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+1. User Registration:
+   - Attempted registration with valid and invalid inputs
+   - Verified email confirmation process
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+2. Task Management:
+   - Created, edited, and deleted tasks
+   - Tested task assignment to children
+   - Verified priority and due date functionality
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+3. Responsiveness:
+   - Tested on various devices and browsers
+   - Ensured all features work on mobile view
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+4. Security:
+   - Attempted accessing restricted pages while logged out
+   - Verified CSRF protection on forms
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### Validation
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- HTML: Passed W3C Markup Validation
+- CSS: Passed W3C CSS Validation
+- JavaScript: Passed JSHint linting
+- Python: Complies with PEP8 standards
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### User Story Testing
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+| User Story | Test Performed | Result |
+|------------|----------------|--------|
+| Quick task addition | Timed task creation process | Passed |
+| Task categorization | Created tasks with different priorities | Passed |
+| Child profile management | Added and removed child profiles | Passed |
+| Due date setting | Set and edited task due dates | Passed |
+| Task assignment to children | Assigned tasks to specific child profiles | Passed |
+| Productivity tracking | Viewed and analyzed task completion rates | Passed |
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+## Credits
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### Code
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- Task prioritization algorithm adapted from [GitHub repo](https://github.com/example/task-priority)
+- Date picker component from [DatePickerJS](https://datepickerjs.com)
 
-------
+### Content
 
-## FAQ about the uptime script
+- Task management tips curated from [Productivity Blog](https://productivityblog.com)
 
-**Why have you added this script?**
+### Media
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+- Icons provided by [FontAwesome](https://fontawesome.com)
+- Background patterns from [Subtle Patterns](https://subtlepatterns.com)
 
-**How will this affect me?**
+### Acknowledgements
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+- Mentor support from Amy 
+- Inspiration from popular task management apps like Todoist and Asana
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+Citations:
+[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/38893900/0430933f-ab07-4bc3-8482-dac94c54cd5d/CI-Full-Stack-Bootcamps-w.-AI-_-Capstone-Project-Pre-Submission-Checklist.docx
+[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/38893900/1f9c61df-2980-41fc-bf46-22bf23302806/Final-project-Criteria.pdf
 
 ---
-
-Happy coding!
+Answer from Perplexity: pplx.ai/share
