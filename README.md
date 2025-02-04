@@ -159,5 +159,4 @@ Citations:
 [1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/38893900/0430933f-ab07-4bc3-8482-dac94c54cd5d/CI-Full-Stack-Bootcamps-w.-AI-_-Capstone-Project-Pre-Submission-Checklist.docx
 [2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/38893900/1f9c61df-2980-41fc-bf46-22bf23302806/Final-project-Criteria.pdf
 
----
-Answer from Perplexity: pplx.ai/share
+
