@@ -1341,24 +1341,6 @@ def process_task_assignment(self, task_id, user_id):
         return False
 ```
 
-
-## AI Insights
-
-### AI Tools Used
-
-#### Development Assistance
-- GitHub Copilot: Code generation and completion
-- ChatGPT: Code review and debugging
-- Claude: Documentation assistance
-
-## Credits
-
-### Technical Resources
-- Django Documentation
-- React Documentation
-- PostgreSQL Documentation
-- Heroku Dev Center
-
 ### Design Resources
 - Adobe XD UI Kit
 - Google Material Icons
@@ -1516,6 +1498,24 @@ INSTALLED_APPS = [
 - Database migration issues
 - Authentication implementation
 - Deployment configuration
+
+## AI Insights
+
+### AI Tools Used
+
+#### Development Assistance
+- GitHub Copilot: Code generation and completion
+- ChatGPT: Code review and debugging
+- Claude: Documentation assistance
+
+## Credits
+
+### Technical Resources
+- Django Documentation
+- React Documentation
+- PostgreSQL Documentation
+- Heroku Dev Center
+
 - 
 ### Acknowledgements
 - Code Institute Mentor Support
