@@ -27,11 +27,11 @@ Responsivity Example
 - [Credits](#credits)
 - [License](#license)
 
-# CAPTAIN MOM - The Family Task Manager (Task Nest)
+# CAPTAIN MOM - The Family Task Manager
 
 [View Live Site](https://family-task-manager.herokuapp.com)
 
-## Introduction to Task Nest
+## Introduction to captain Mom
 
 Welcome to Captain Mom, a comprehensive family task management solution designed to transform how busy families organize their daily lives. This documentation provides a detailed overview of the project's development, features, and implementation.
 
@@ -107,6 +107,39 @@ Task Nest addresses the growing need for family-oriented task management solutio
    - Child task assignment
    - Progress tracking
    - Mobile accessibility
+  
+   ## User Story Testing
+
+### Authentication
+```gherkin
+Feature: User Registration
+Scenario: Successful Registration
+  Given I am on the registration page
+  When I enter valid credentials
+  Then my account should be created
+  And I should be redirected to the dashboard
+  And I should see a welcome notification
+
+Test Results:
+✓ Account creation successful
+✓ Redirect working
+✓ Welcome notification displayed
+```
+
+### Task Management
+```gherkin
+Feature: Task Creation
+Scenario: Create New Task
+  Given I am logged in
+  When I create a new task
+  Then the task should appear in my list
+  And I should receive a confirmation
+
+Test Results:
+✓ Task creation successful
+✓ Task appears in list
+✓ Confirmation received
+```
 
 ## Planning & Development Process
 
@@ -175,6 +208,29 @@ Task Nest addresses the growing need for family-oriented task management solutio
    - Feature documentation
    - FAQs
    - Tutorial videos
+
+## Agile Development
+
+### Project Board
+[View Project Board](https://github.com/users/username/projects/task-nest-board)
+
+![Project Board Screenshot](assets/agile/project-board.png)
+
+### Sprint Progress
+Sprint 1: Authentication & Core Features
+- [x] User registration
+- [x] Login/logout
+- [x] Basic task creation
+
+Sprint 2: Task Management
+- [x] CRUD operations
+- [x] Task assignment
+- [x] Notifications
+
+Sprint 3: Child Management
+- [x] Child profiles
+- [x] Task delegation
+- [x] Progress tracking
 
 ### Planning Tools & Technology Stack
 
@@ -353,7 +409,48 @@ Font Combinations:
      letter-spacing: 0;
    }
    ```
+# Design Journey
 
+## Initial Wireframes
+![Initial Sketches](assets/wireframes/initial-sketches.jpg)
+- Hand-drawn concept sketches
+- Basic layout planning
+- User flow mapping
+
+## Digital Wireframes
+![Miro Board](assets/wireframes/miro-board.png)
+- Created using Miro
+- Mobile and desktop layouts
+- Component placement
+
+## Final Prototypes
+![Balsamiq Designs](assets/wireframes/balsamiq-final.png)
+- Refined in Balsamiq
+- Interactive elements
+- Responsive layouts
+
+# Brand Development
+
+## Logo Evolution
+![Logo Development](assets/brand/logo-evolution.png)
+- Initial concepts using Adobe Firefly
+- Color iterations
+- Final design implementation
+
+## Brand Colors
+```css
+/* Brand Color System */
+:root {
+  --primary-blue: #4A90E2;    /* Trust, productivity */
+  --secondary-blue: #357ABD;  /* Depth, reliability */
+  --accent-blue: #1B4F8F;     /* Authority, stability */
+}
+```
+
+## Typography Journey
+- Started with web-safe fonts
+- Tested Google Fonts combinations
+- Final selection: Montserrat + Open Sans
 ### Component Library
 
 #### Button System
@@ -421,6 +518,20 @@ Form Guidelines:
 
 ### Responsive Design System
 
+## Responsive Design Examples
+
+### Mobile View (320px)
+![Mobile Dashboard](assets/screenshots/mobile-dashboard.png)
+![Mobile Tasks](assets/screenshots/mobile-tasks.png)
+
+### Tablet View (768px)
+![Tablet Dashboard](assets/screenshots/tablet-dashboard.png)
+![Tablet Tasks](assets/screenshots/tablet-tasks.png)
+
+### Desktop View (1024px+)
+![Desktop Dashboard](assets/screenshots/desktop-dashboard.png)
+![Desktop Tasks](assets/screenshots/desktop-tasks.png)
+
 #### Grid System
 ![Grid Layout](assets/design/grid.png)
 
@@ -454,6 +565,23 @@ Layout Rules:
    - Three columns
    - Persistent navigation
    - Dashboard layout
+  
+   - # Project Screenshots
+
+## User Interface
+![Dashboard](assets/screenshots/dashboard.png)
+![Task List](assets/screenshots/task-list.png)
+![Profile View](assets/screenshots/profile.png)
+
+## Mobile Views
+![Mobile Dashboard](assets/screenshots/mobile-dashboard.png)
+![Mobile Tasks](assets/screenshots/mobile-tasks.png)
+
+## Feature Documentation
+![Task Creation](assets/screenshots/task-creation.png)
+![Task Management](assets/screenshots/task-management.png)
+![User Profile](assets/screenshots/user-profile.png)
+
 
 #### Component Adaptation
 ![Responsive Components](assets/design/responsive.png)
@@ -572,6 +700,28 @@ Layout Rules:
   </ul>
 </div>
 ```
+
+## Feature Screenshots
+
+### Dashboard
+![Dashboard Overview](assets/features/dashboard.png)
+- Quick task creation
+- Priority visualization
+- Progress tracking
+
+### Task Management
+![Task Creation](assets/features/task-creation.png)
+![Task List](assets/features/task-list.png)
+- Intuitive form design
+- Clear success messages
+- Responsive layout
+
+### Child Profiles
+![Child Management](assets/features/child-profiles.png)
+- Profile creation
+- Task assignment
+- Progress visualization
+
 
 ## User Experience (UX)
 
@@ -1124,14 +1274,7 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
 ```
 
-## AI Insights
 
-### AI Tools Used
-
-#### Development Assistance
-- GitHub Copilot: Code generation and completion
-- ChatGPT: Code review and debugging
-- Claude: Documentation assistance
 
 #### Implementation Examples
 ```python
@@ -1198,97 +1341,15 @@ def process_task_assignment(self, task_id, user_id):
         return False
 ```
 
-## Responsive Design Examples
 
-### Mobile View (320px)
-![Mobile Dashboard](assets/screenshots/mobile-dashboard.png)
-![Mobile Tasks](assets/screenshots/mobile-tasks.png)
+## AI Insights
 
-### Tablet View (768px)
-![Tablet Dashboard](assets/screenshots/tablet-dashboard.png)
-![Tablet Tasks](assets/screenshots/tablet-tasks.png)
+### AI Tools Used
 
-### Desktop View (1024px+)
-![Desktop Dashboard](assets/screenshots/desktop-dashboard.png)
-![Desktop Tasks](assets/screenshots/desktop-tasks.png)
-
-## Agile Development
-
-### Project Board
-[View Project Board](https://github.com/users/username/projects/task-nest-board)
-
-![Project Board Screenshot](assets/agile/project-board.png)
-
-### Sprint Progress
-Sprint 1: Authentication & Core Features
-- [x] User registration
-- [x] Login/logout
-- [x] Basic task creation
-
-Sprint 2: Task Management
-- [x] CRUD operations
-- [x] Task assignment
-- [x] Notifications
-
-Sprint 3: Child Management
-- [x] Child profiles
-- [x] Task delegation
-- [x] Progress tracking
-
-## User Story Testing
-
-### Authentication
-```gherkin
-Feature: User Registration
-Scenario: Successful Registration
-  Given I am on the registration page
-  When I enter valid credentials
-  Then my account should be created
-  And I should be redirected to the dashboard
-  And I should see a welcome notification
-
-Test Results:
-✓ Account creation successful
-✓ Redirect working
-✓ Welcome notification displayed
-```
-
-### Task Management
-```gherkin
-Feature: Task Creation
-Scenario: Create New Task
-  Given I am logged in
-  When I create a new task
-  Then the task should appear in my list
-  And I should receive a confirmation
-
-Test Results:
-✓ Task creation successful
-✓ Task appears in list
-✓ Confirmation received
-```
-
-## Feature Screenshots
-
-### Dashboard
-![Dashboard Overview](assets/features/dashboard.png)
-- Quick task creation
-- Priority visualization
-- Progress tracking
-
-### Task Management
-![Task Creation](assets/features/task-creation.png)
-![Task List](assets/features/task-list.png)
-- Intuitive form design
-- Clear success messages
-- Responsive layout
-
-### Child Profiles
-![Child Management](assets/features/child-profiles.png)
-- Profile creation
-- Task assignment
-- Progress visualization
-
+#### Development Assistance
+- GitHub Copilot: Code generation and completion
+- ChatGPT: Code review and debugging
+- Claude: Documentation assistance
 
 ## Credits
 
@@ -1329,48 +1390,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
 ]
 ```
-# Design Journey
 
-## Initial Wireframes
-![Initial Sketches](assets/wireframes/initial-sketches.jpg)
-- Hand-drawn concept sketches
-- Basic layout planning
-- User flow mapping
-
-## Digital Wireframes
-![Miro Board](assets/wireframes/miro-board.png)
-- Created using Miro
-- Mobile and desktop layouts
-- Component placement
-
-## Final Prototypes
-![Balsamiq Designs](assets/wireframes/balsamiq-final.png)
-- Refined in Balsamiq
-- Interactive elements
-- Responsive layouts
-
-# Brand Development
-
-## Logo Evolution
-![Logo Development](assets/brand/logo-evolution.png)
-- Initial concepts using Adobe Firefly
-- Color iterations
-- Final design implementation
-
-## Brand Colors
-```css
-/* Brand Color System */
-:root {
-  --primary-blue: #4A90E2;    /* Trust, productivity */
-  --secondary-blue: #357ABD;  /* Depth, reliability */
-  --accent-blue: #1B4F8F;     /* Authority, stability */
-}
-```
-
-## Typography Journey
-- Started with web-safe fonts
-- Tested Google Fonts combinations
-- Final selection: Montserrat + Open Sans
 
 # Manual Testing Documentation
 
@@ -1461,21 +1481,6 @@ INSTALLED_APPS = [
    - Accessibility considerations
    - User experience optimization
 
-# Project Screenshots
-
-## User Interface
-![Dashboard](assets/screenshots/dashboard.png)
-![Task List](assets/screenshots/task-list.png)
-![Profile View](assets/screenshots/profile.png)
-
-## Mobile Views
-![Mobile Dashboard](assets/screenshots/mobile-dashboard.png)
-![Mobile Tasks](assets/screenshots/mobile-tasks.png)
-
-## Feature Documentation
-![Task Creation](assets/screenshots/task-creation.png)
-![Task Management](assets/screenshots/task-management.png)
-![User Profile](assets/screenshots/user-profile.png)
 
 # Future Development
 
