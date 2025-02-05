@@ -129,3 +129,9 @@ INSTALLED_APPS = [
     ...
     'tasks',
 ]
+
+# filepath: todo_app/settings.py
+INSTALLED_APPS = [
+    ...
+    'tasks',
+]
