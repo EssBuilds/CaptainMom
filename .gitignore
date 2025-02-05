@@ -1,9 +1,17 @@
-core.Microsoft*
-core.mongo*
-core.python*
-env.py
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
-node_modules/
-.github/
-cloudinary_python.txt
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
