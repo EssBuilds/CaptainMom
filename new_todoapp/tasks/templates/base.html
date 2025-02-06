@@ -99,5 +99,20 @@
             return true;
         }
     </script>
+    <!-- Add this script in base.html or a separate JS file -->
+<script>
+    function addChild() {
+        const childrenContainer = document.getElementById('children-container');
+        const newChild = document.createElement('div');
+        newChild.className = 'mb-3 child-entry';
+        newChild.innerHTML = `
+            <input type="text" class="form-control" name="child_name" required 
+                   placeholder="Child's name">
+            <button type="button" class="btn btn-danger btn-sm mt-2" 
+                    onclick="this.parentElement.remove()">Remove</button>
+        `;
+        childrenContainer.appendChild(newChild);
+    }
+</script>
 </body>
 </html>
