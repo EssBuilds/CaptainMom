@@ -1,8 +1,0 @@
-<!-- filepath: tasks/templates/tasks/child_list.html -->
-<h2>Children</h2>
-<ul>
-    {% for child in children %}
-        <li>{{ child.name }} <a href="{% url 'delete_child' child.id %}">Delete</a></li>
-    {% endfor %}
-</ul>
-<a href="{% url 'add_child' %}">Add Child</a>
