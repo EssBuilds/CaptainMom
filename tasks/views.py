@@ -1,44 +1,41 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
-from .forms import TaskForm, ChildForm
+# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/tasks/views.py
+
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Task, Child
 
-@login_required
-def home(request):
-    children = Child.objects.filter(user=request.user)
-    return render(request, 'home.html', {'children': children})
+class TaskListView(LoginRequiredMixin, ListView):
+    model = Task
+    template_name = 'tasks/list.html'
+    context_object_name = 'tasks'
 
-@login_required
-def add_child(request):
-    if request.method == 'POST':
-        form = ChildForm(request.POST)
-        if form.is_valid():
-            child = form.save(commit=False)
-            child.user = request.user
-            child.save()
-            return redirect('home')
-    else:
-        form = ChildForm()
-    return render(request, 'add_child.html', {'form': form})
+    def get_queryset(self):
+        return Task.objects.filter(child__parent=self.request.user)
 
-@login_required
-def task_detail(request, child_id):
-    child = get_object_or_404(Child, id=child_id, user=request.user)
-    tasks = Task.objects.filter(child=child)
-    return render(request, 'task_detail.html', {'child': child, 'tasks': tasks})
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    model = Task
+    fields = ['child', 'title', 'description', 'due_date', 'priority']
+    success_url = reverse_lazy('task-list')
 
-@login_required
-def add_task(request, child_id):
-    child = get_object_or_404(Child, id=child_id, user=request.user)
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            task = form.save(commit=False)
-            task.child = child
-            task.save()
-            return redirect('task_detail', child_id=child.id)
-    else:
-        form = TaskForm()
-    return render(request, 'add_task.html', {'form': form, 'child': child})
+    def form_valid(self, form):
+        form.instance.child = form.cleaned_data['child']
+        if form.instance.child.parent != self.request.user:
+            form.add_error('child', 'Invalid child selection')
+            return self.form_invalid(form)
+        return super().form_valid(form)
+
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    fields = ['child', 'title', 'description', 'due_date', 'priority']
+    success_url = reverse_lazy('task-list')
+
+    def get_queryset(self):
+        return Task.objects.filter(child__parent=self.request.user)
+
+class TaskDeleteView(LoginRequiredMixin, DeleteView):
+    model = Task
+    success_url = reverse_lazy('task-list')
+
+    def get_queryset(self):
+        return Task.objects.filter(child__parent=self.request.user)

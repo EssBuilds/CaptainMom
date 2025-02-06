@@ -14,9 +14,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/urls.py
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from tasks.views import TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TaskListView.as_view(), name='task-list'),
+    path('create/', TaskCreateView.as_view(), name='task-create'),
+    path('update/<int:pk>/', TaskUpdateView.as_view(), name='task-update'),
+    path('delete/<int:pk>/', TaskDeleteView.as_view(), name='task-delete'),
+    path('users/', include('users.urls')),  # Include users app URLs
+]
+
+# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('tasks.urls')),  # Include tasks app URLs
+    path('users/', include('users.urls')),  # Include users app URLs
 ]

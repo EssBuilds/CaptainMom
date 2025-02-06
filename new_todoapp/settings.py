@@ -14,7 +14,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks',  # Your app
+
+    # Your apps
+    'users',
+    'tasks',  
 ]
 
 MIDDLEWARE = [
@@ -52,8 +55,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'new_todoapp',
-        'USER': 'postgres',
-        'PASSWORD': 'your_password',
+        'USER': 'postgres',  # Replace with your PostgreSQL username if different
+        'PASSWORD': 'postgres',  # Replace with your PostgreSQL password
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -77,3 +80,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+AUTH_USER_MODEL = 'users.CustomUser' # Custom user model

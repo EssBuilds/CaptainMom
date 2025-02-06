@@ -12,3 +12,23 @@
     {% endfor %}
 </div>
 {% endblock %}
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Task List</h2>
+    <a href="{% url 'task-create' %}" class="btn btn-primary mb-3">Create Task</a>
+    <ul class="list-group">
+        {% for task in tasks %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ task.title }}
+                <div>
+                    <a href="{% url 'task-update' task.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'task-delete' task.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
