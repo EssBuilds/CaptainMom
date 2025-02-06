@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome, {{ user.username }}!</h1>
+<a href="{% url 'add_child' %}" class="btn">Add Child</a>
+<ul>
+    {% for child in children %}
+    <li>
+        <a href="{% url 'task_detail' child.id %}">{{ child.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
