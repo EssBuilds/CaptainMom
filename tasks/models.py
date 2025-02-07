@@ -38,3 +38,12 @@ class Task(models.Model):
 
     def __str__(self):
         return f"{self.title} - {self.child.name}"
+
+class Todo(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+    due_date = models.DateField()
+    completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
