@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mom's Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ffa07a, #ffc0cb);
+            min-height: 100vh;
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #4682b4, #98fb98);
+            border: none;
+            color: white;
+        }
+        .btn-gradient:hover {
+            opacity: 0.9;
+            color: white;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: none;
+        }
+        .todo-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+        }
+        .children-list {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem;
+        }
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mom's Todo List</a>
+            <div class="d-flex" id="navbarNav">
+                <button id="logoutBtn" class="btn btn-gradient d-none">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notification -->
+    <div class="notification alert" role="alert" id="notification"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Login Form -->
+        <div id="loginSection" class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="todo-card">
+                    <h2 class="text-center mb-4">Login</h2>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-gradient w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo App Content (Hidden until login) -->
+        <div id="todoSection" class="row d-none">
+            <!-- Todo Creation and List -->
+            <div class="col-md-8">
+                <!-- New Todo Form -->
+                <div class="todo-card mb-4">
+                    <h2 class="mb-3">Add New Todo</h2>
+                    <form id="todoForm">
+                        <div class="mb-3">
+                            <label for="todoTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="todoTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="todoDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="todoDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="assignedChild" class="form-label">Assign to Child</label>
+                            <select class="form-control" id="assignedChild">
+                                <option value="">Select a child</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-gradient">Add Todo</button>
+                    </form>
+                </div>
+
+                <!-- Todo List -->
+                <div class="todo-card">
+                    <h2 class="mb-3">Todo List</h2>
+                    <div id="todoList"></div>
+                </div>
+            </div>
+
+            <!-- Children Management -->
+            <div class="col-md-4">
+                <div class="children-list">
+                    <h2 class="mb-3">Children</h2>
+                    <div id="childrenList" class="mb-3"></div>
+                    <button id="addChildBtn" class="btn btn-gradient w-100">Add Child</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Child Modal -->
+    <div class="modal fade" id="addChildModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Child</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addChildForm">
+                        <div class="mb-3">
+                            <label for="childName" class="form-label">Child's Name</label>
+                            <input type="text" class="form-control" id="childName" required>
+                        </div>
+                        <button type="submit" class="btn btn-gradient">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
