@@ -1,0 +1,23 @@
+/* Gradient Background */
+.gradient-bg {
+    background: linear-gradient(135deg, #FFA500, #FF69B4);
+    min-height: 100vh;
+  }
+  
+  /* Button Gradient */
+  .button-gradient {
+    background: linear-gradient(135deg, #0074D9, #2ECC40);
+    border: none;
+    color: white;
+  }
+  
+  .button-gradient:hover {
+    opacity: 0.9;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-brand {
+      font-size: 1.2rem;
+    }
+  }
