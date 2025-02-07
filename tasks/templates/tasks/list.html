@@ -1,0 +1,15 @@
+<!-- filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/tasks/templates/tasks/list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task.title }} - {{ task.due_date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

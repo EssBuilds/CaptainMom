@@ -1,10 +1,17 @@
-# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/tasks/models.py
-
 from django.db import models
-# from users.models import CustomUser
+from django.conf import settings
+from django.contrib.auth import get_user_model
+
+def get_default_user():
+    User = get_user_model()
+    return User.objects.first().id  # Returns the ID of the first user in the database
 
 class Child(models.Model):
-   # parent = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    parent = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        default=get_default_user  # Use a callable function for dynamic assignment
+    )
     name = models.CharField(max_length=100)
     birth_date = models.DateField(default='2000-01-01')  # Add a default value
     favorite_toy = models.CharField(max_length=100, blank=True)
@@ -18,7 +25,6 @@ class Task(models.Model):
         ('M', 'Medium'),
         ('H', 'High'),
     ]
-    
     child = models.ForeignKey(Child, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)

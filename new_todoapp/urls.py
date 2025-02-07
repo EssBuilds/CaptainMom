@@ -54,3 +54,15 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 ]
+
+# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/urls.py
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('tasks.urls')),  # Include tasks app URLs
+    path('users/', include('users.urls')),  # Include users app URLs
+    path('accounts/', include('django.contrib.auth.urls')),  # Include built-in auth URLs
+]

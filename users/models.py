@@ -1,5 +1,3 @@
-# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/users/models.py
-
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
