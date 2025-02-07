@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'your-secret-key-here'  # Use environment variables in production
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -31,6 +31,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'new_todoapp.urls'
+
+# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/settings.py
 
 TEMPLATES = [
     {
@@ -82,3 +84,7 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 AUTH_USER_MODEL = 'users.CustomUser' # Custom user model
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'

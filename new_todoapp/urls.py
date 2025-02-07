@@ -29,13 +29,28 @@ urlpatterns = [
     path('users/', include('users.urls')),  # Include users app URLs
 ]
 
+
 # filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/urls.py
 
 from django.contrib import admin
 from django.urls import path, include
 
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
+    # Admin site
     path('admin/', admin.site.urls),
-    path('', include('tasks.urls')),  # Include tasks app URLs
-    path('users/', include('users.urls')),  # Include users app URLs
+
+    # Task-related URLs
+    path('', TaskListView.as_view(), name='task-list'),
+    path('create/', TaskCreateView.as_view(), name='task-create'),
+    path('update/<int:pk>/', TaskUpdateView.as_view(), name='task-update'),
+    path('delete/<int:pk>/', TaskDeleteView.as_view(), name='task-delete'),
+
+    # Users app
+    path('users/', include('users.urls')),
+
+    # Login and logout views
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
 ]
