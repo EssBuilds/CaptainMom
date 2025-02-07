@@ -1,13 +1,20 @@
 import os
+from pathlib import Path
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key-here'  # Use environment variables in production
-DEBUG = False
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key-here')
 
-ALLOWED_HOSTS = ['*']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
+
+# Application definition
 INSTALLED_APPS = [
+    # Default Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -16,9 +23,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Your apps
-    'users',
-    'tasks',  
-]
+     'users',
+    'children',
+    'todos',
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -31,8 +40,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'new_todoapp.urls'
-
-# filepath: /c:/Users/ekari/OneDrive/Desktop/FINAL PROJECT/new_todoapp/new_todoapp/settings.py
 
 TEMPLATES = [
     {
@@ -52,39 +59,60 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'new_todoapp.wsgi.application'
 
-# Database Configuration
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'new_todoapp',
-        'USER': 'postgres',  # Replace with your PostgreSQL username if different
-        'PASSWORD': 'postgres',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+# Password validation
+# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
+# Internationalization
+# https://docs.djangoproject.com/en/3.2/topics/i18n/
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'users.CustomUser' # Custom user model
+# Authentication settings
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # Default auth backend
+]
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'  # Redirect unauthenticated users to login page
+LOGIN_REDIRECT_URL = '/'  # Redirect after successful login
+LOGOUT_REDIRECT_URL = '/accounts/login/'  # Redirect after logout
 
-LOGOUT_REDIRECT_URL = '/'
+# settings.py
+AUTH_USER_MODEL = 'users.CustomUser'

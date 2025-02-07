@@ -1,23 +1,6 @@
 from django.db import models
-from django.conf import settings
-from django.contrib.auth import get_user_model
-
-def get_default_user():
-    User = get_user_model()
-    return User.objects.first().id  # Returns the ID of the first user in the database
-
-class Child(models.Model):
-    parent = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        default=get_default_user  # Use a callable function for dynamic assignment
-    )
-    name = models.CharField(max_length=100)
-    birth_date = models.DateField(default='2000-01-01')  # Add a default value
-    favorite_toy = models.CharField(max_length=100, blank=True)
-
-    def __str__(self):
-        return self.name
+from django.utils.timezone import now
+from children.models import Child
 
 class Task(models.Model):
     PRIORITY_CHOICES = [
@@ -25,7 +8,8 @@ class Task(models.Model):
         ('M', 'Medium'),
         ('H', 'High'),
     ]
-    child = models.ForeignKey(Child, on_delete=models.CASCADE)
+
+    child = models.ForeignKey('children.Child', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     due_date = models.DateTimeField()
@@ -36,14 +20,9 @@ class Task(models.Model):
     class Meta:
         ordering = ['-due_date']
 
+    @property
+    def is_overdue(self):
+        return not self.completed and self.due_date < now()
+
     def __str__(self):
         return f"{self.title} - {self.child.name}"
-
-class Todo(models.Model):
-    title = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
-    due_date = models.DateField()
-    completed = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.title
