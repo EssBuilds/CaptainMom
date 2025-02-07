@@ -1,23 +1,134 @@
-/* Gradient Background */
+/* styles.css */
+
+/* Main background gradient */
 .gradient-bg {
-    background: linear-gradient(135deg, #FFA500, #FF69B4);
+    background: linear-gradient(135deg, #ffa07a 0%, #ffc0cb 100%);
     min-height: 100vh;
-  }
-  
-  /* Button Gradient */
-  .button-gradient {
-    background: linear-gradient(135deg, #0074D9, #2ECC40);
-    border: none;
-    color: white;
-  }
-  
-  .button-gradient:hover {
+}
+
+/* Button gradient */
+.button-gradient {
+    background: linear-gradient(to right, #4682b4 0%, #98fb98 100%) !important;
+    border: none !important;
+    color: white !important;
+    transition: opacity 0.3s ease;
+}
+
+.button-gradient:hover {
     opacity: 0.9;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .navbar-brand {
-      font-size: 1.2rem;
+}
+
+/* Card styling */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+/* Task list styling */
+.list-group-item {
+    border: none;
+    background-color: #f8f9fa;
+    margin-bottom: 0.5rem;
+    border-radius: 8px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Navigation styling */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #4682b4 !important;
+}
+
+.nav-link {
+    color: #4682b4 !important;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Input styling */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: #4682b4;
+    box-shadow: 0 0 0 0.2rem rgba(70, 130, 180, 0.25);
+}
+
+/* Header text styling */
+.display-4 {
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer styling */
+footer {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    position: relative;
+    padding: 1rem 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Task action buttons */
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Notification styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000;
+}
+
+.notification.show {
+    display: block;
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1.5rem;
     }
-  }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
