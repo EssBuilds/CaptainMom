@@ -1,8 +1,8 @@
-# CAPTAIN MOM
+# STAR MAMAS 
 
 [View Live Site](https://family-task-manager.herokuapp.com)
 
-## Introduction to Task Nest
+## Introduction to Star Mamas. 
 
 Welcome to Task Nest, a comprehensive family task management solution designed to transform how busy families organize their daily lives. This documentation provides a detailed overview of the project's development, features, and implementation.
 
